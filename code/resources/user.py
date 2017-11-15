@@ -4,7 +4,9 @@ from models.user import UserModel
 
 
 class UserRegister(Resource):
-    """docstring for UserRegister"Resource"""
+    """
+    Authentication class.
+    """
 
     parser = reqparse.RequestParser()
 
@@ -19,6 +21,12 @@ class UserRegister(Resource):
                         help='This field cannot be blank!')
 
     def post(self):
+        """
+        It creates a user object or retrieves an error.
+
+        :return: a message plus a 400 or 201 return code.
+        :rtype: tuple
+        """
         data = UserRegister.parser.parse_args()
         if UserModel.find_by_username(data['username']):
             return {"message": "User with that username already exists."}, 400
