@@ -47,7 +47,10 @@ class GuessModel(db.Model):
         :return: class response.
         :rtype: dict
         """
-        return {'id': self.id, 'result': [self.black_pegs, self.white_pegs]}
+        return {'id': self.id,
+                'code': [self.first, self.second, self.third, self.fourth],
+                'result': [self.black_pegs, self.white_pegs]
+                }
 
     @classmethod
     def find_by_game_id(cls, game_id):

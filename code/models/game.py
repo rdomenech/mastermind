@@ -35,8 +35,9 @@ class GameModel(db.Model):
         :return: class response.
         :rtype: dict
         """
-        return {'id': self.id, 'code': [self.first, self.second, self.third,
-                                        self.fourth]}
+        return {'id': self.id,
+                'code': [self.first, self.second, self.third, self.fourth]
+                }
 
     @classmethod
     def find_by_id(cls, _id):
