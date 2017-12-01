@@ -2,6 +2,7 @@ import unittest
 
 from models.game import GameModel
 
+
 class TestGetResult(unittest.TestCase):
 
     def test_none_pegs(self):
@@ -136,8 +137,8 @@ class TestGetResult(unittest.TestCase):
         game.fourth = 'white'
 
         result = game.get_result(['white', 'white', 'blue', 'black'])
-        self.assertEqual(result, (1, 3), 'One black and three white pegs should'
-                                         ' be expected')
+        self.assertEqual(result, (1, 3), 'One black and three white pegs '
+                                         'should be expected')
 
     def test_two_black_one_white_pegs(self):
 
