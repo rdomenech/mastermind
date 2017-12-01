@@ -1,3 +1,4 @@
+from collections import Counter
 from random import sample
 
 from db import db
@@ -62,16 +63,9 @@ class GameModel(db.Model):
         """
         code = self.get_code()
 
-        black_pegs = 0
-        white_pegs = 0
-        for element in guess_code:
-            if element in code:
-                white_pegs += 1
-                if guess_code.index(element) == code.index(element):
-                    black_pegs += 1
-                    white_pegs -= 1
-
-        return (black_pegs, white_pegs)
+        pins = sum((Counter(code) & Counter(guess_code)).values())
+        black = sum(c == g for c, g in zip(code, guess_code))
+        return (black, pins - black)
 
     def get_code(self):
         """
